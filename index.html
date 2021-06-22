@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fake EAN Code Generator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Create some fake EANs for testing purposes" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="/tailwind.css" rel="stylesheet">
+
+</head>
+<body>
+   <div class="max-w-7xl mx-auto pt-24 pb-12 px-8">
+    <div class="text-center">
+      <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">Fake EAN Generator</p>
+      <p class="max-w-xl mt-5 mx-auto text-xl text-gray-500">To be used when testing.</p>
+    </div>
+  </div>
+
+
+  <div class="max-w-4xl mx-auto px-4">
+    <div x-data="{ amount: 20, type:13, eans: [] }">
+      <form x-on:submit.prevent>
+        <div class="flex space-x-6 items-end justify-center">
+        <div>
+          <label for="amount" class="block text-sm font-medium text-gray-700">Number of EANs to generate</label>
+          <div class="mt-1">
+            <input type="number" min="1" max="2000" name="amount" x-model.number="amount" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+          </div>
+        </div>
+
+
+        <div>
+          <label for="type" class="block text-sm font-medium text-gray-700">EAN Type</label>
+          <select id="type" name="type" x-model.number="type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+            <option :value="13">GLN - 13 Digit</option>
+            <option :value="18">GSRN - 18 Digit</option>
+          </select>
+        </div>
+
+        <div>
+          <button x-on:click="eans = EANgenerator(amount,type)"
+          class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+
+          >Generate Codes</button>
+        </div>
+
+      </div>
+        
+     
+
+      </form>
+      <div class="mt-12 text-center">
+        <ul>
+        <template x-for="ean in eans">
+        <li x-text="ean"></li>
+         </template>
+       </ul>
+
+      </div>
+
+</div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
