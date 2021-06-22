@@ -21,7 +21,7 @@
   <div class="max-w-4xl mx-auto px-4">
     <div x-data="{ amount: 20, type:13, eans: [] }">
       <form x-on:submit.prevent>
-        <div class="flex space-x-6 items-end justify-center">
+        <div class="sm:flex space-y-4 sm:space-y-0 sm:space-x-6 items-end justify-center">
         <div>
           <label for="amount" class="block text-sm font-medium text-gray-700">Number of EANs to generate</label>
           <div class="mt-1">
@@ -50,8 +50,8 @@
      
 
       </form>
-      <div class="mt-12 text-center">
-        <ul>
+      <div class="mt-12 sm:text-center">
+        <ul class="sm:text-xl">
         <template x-for="ean in eans">
         <li x-text="ean"></li>
          </template>
